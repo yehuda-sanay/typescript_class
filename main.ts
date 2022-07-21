@@ -77,6 +77,8 @@
 //     }
 // }
 
+
+//שאלה 39
 // class User{
 //     fullName:string;
 //     age:number;
@@ -94,12 +96,10 @@
 //         this.anvalibel=isValibel;
 //     }
 //     static youngOrOld(userYoungOrOld:string,...usersObject:User[]){
-//         let newObjectArray:User[]=usersObject.sort((a,b)=>a.age-b.age);
-//        return userYoungOrOld == "young" ? newObjectArray[0] : userYoungOrOld[userYoungOrOld.length-1];  
+//         usersObject.sort((a,b)=>a.age-b.age);
+//        return userYoungOrOld == "young" ? usersObject[0] : usersObject[usersObject.length-1];  
 //     }
-//     returnRedOrGreen():string{
-//         return this.anvalibel ? "green":"red"
-//     }
+   
 // }
 
 // class Student extends User{
@@ -117,11 +117,134 @@
 //     returnDetels():string{
 //         return `${this.firstName} ${this.lastName} ${this.age} ${this.password} ${this.email} ${this.dateOfBirth}`
 //     }
+//      returnRedOrGreen():string{
+//         return this.userValibel ? "green":"red"
+//     }
 // }
 // const Yehuda:Student=new Student("yehuda","sanay",31,"05050","yehudasanay1","23/05/91")
 // const Shay:Student=new Student("shay","nis",50,"05050","yehudasanay1","23/05/91")
 // const Sara:Student=new Student("sara","avraham",30,"05050","yehudasanay1","23/05/91")
 // const Nimi:Student=new Student("nimi","sanay",60,"05050","yehudasanay1","23/05/91")
-// let myArray:User[]=[Yehuda,Shay,Sara,Nimi]
-// console.log(User.youngOrOld("young",myArray));
+// console.log(User.youngOrOld("dkfj",Yehuda,Sara,Nimi));
+// Yehuda.setUserValibel=true;
+// Sara.setUserValibel=false
+// console.log(Sara.returnRedOrGreen())
+
+
+//שאלה 42 43
+// class Rom{
+//     width:number;
+//     length:number;
+//     size:number;
+//     private window:boolean=false
+//     constructor(width:number,length:number,size:number){
+//         this.width=width;
+//         this.length=length;
+//         this.size=size;
+//     }
+//     get getWindow():boolean{
+//         return this.window;
+//     }
+//     set setWindow(isWindow:boolean){
+//         this.window=isWindow;
+//     }
+//     static romBigOrSmall(bigOrSmall:string,...romArray:Rom[]){
+//          romArray.sort((a,b)=>a.size-b.size);
+//         return bigOrSmall == "small" ? romArray[0] : romArray[romArray.length-1];  
+//      }
+//     // static romBigOrSmall(bigOrSmall:string,...romArray:Rom[]){
+//     //     bigOrSmall=="small" ? romArray.sort((a,b)=>a.size-b.size)[0]:romArray.sort((a,b)=>b.size-a.size)[0]
+//     // }
+// }
+
+// class Kitchen extends Rom{
+//     numOfClosets:number;
+//     constructor(width:number,length:number,size:number,numOfClosets:number){
+//         super(width,length,size)
+//         this.numOfClosets=numOfClosets;
+//     }
+//     printKitchenDetels():string{
+//         return `${this.width} ${this.length} ${this.numOfClosets}`
+//     }
+//     returnHaveWindowOrNot(){
+//         return this.getWindow==true ? "have Window":"close room"
+//     }
+// }
+// const Kitchen1:Kitchen=new Kitchen(36,63,52,41);
+// const Kitchen2:Kitchen=new Kitchen(56,23,12,87);
+// const Kitchen3:Kitchen=new Kitchen(96,36,25,12);
+// console.log(Rom.romBigOrSmall("big",Kitchen1,Kitchen2,Kitchen3))
+// Kitchen1.setWindow=false
+// console.log(Kitchen1.returnHaveWindowOrNot())
+
+// class Living_rom extends Rom{
+//     seatsNum:number;
+//     airDirection:string="";
+//     constructor(width:number,length:number,size:number,seatsNum:number,airDirection:string){
+//         super(width,length,size)
+//         this.seatsNum=seatsNum;
+//         this.airDirection=airDirection;
+//     }
+//     printLiving_romDetels(){
+//         console.log(`${this.width} ${this.length} ${this.seatsNum} ${this.airDirection}`)
+//     }
+//     printWindowAndAirDirection():string{
+//         return this.getWindow==true ? `"have Window" ${this.airDirection}`:"close room"
+//     }
+
+// }
+// const Living_rom1:Living_rom=new Living_rom(32,54,874,3,"west")
+// const Living_rom2:Living_rom=new Living_rom(54,21,85,96,"north")
+// const Living_rom3:Living_rom=new Living_rom(65,874,96,3,"east")
+// console.log(Living_rom.romBigOrSmall("small",Living_rom1,Living_rom2,Living_rom3))
+
+class Product{
+    width:number;
+    length:number;
+    weight:number;
+    price:number;
+    private ordered:boolean=false;
+    constructor(width:number,length:number,weight:number,price:number){
+        this.width=width;
+        this.length=length;
+        this.weight=weight;
+        this.price=price;
+    }
+    get getOrder():boolean{
+        return this.ordered;
+    }
+    set setOrdered(itsOrdered:boolean){
+        this.ordered=itsOrdered;
+    }
+    static expensiveOrCheap(expectation:string="expensive",...productArray:Product[]){
+        productArray.sort((a,b)=>a.price-b.price);
+        return expectation=="expensive" ? productArray[productArray.length-1]:productArray[0];
+    }
+}
+
+class Computer extends Product{
+    vat:number;
+    constructor(width:number,length:number,weight:number,price:number,vat:number){
+        super(width,length,weight,price)
+        this.vat=vat;
+    }
+    printCoputerDetels():void{
+        console.log(`width:${this.width},length:${this.length},weight:${this.weight},price:${this.price},vat:${this.vat}`)
+    }
+
+    printIfComputerIsOreder():string{
+        return this.getOrder==true ? "order":"need to order";
+    }
+}
+const Computer1:Computer=new Computer(23,12,65,98,78);
+const Computer2:Computer=new Computer(45,56,45,87,99);
+const Computer3:Computer=new Computer(54,13,54,54,42);
+console.log()
+
+
+
+
+
+
+
 
