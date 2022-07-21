@@ -198,49 +198,131 @@
 // const Living_rom3:Living_rom=new Living_rom(65,874,96,3,"east")
 // console.log(Living_rom.romBigOrSmall("small",Living_rom1,Living_rom2,Living_rom3))
 
-class Product{
-    width:number;
-    length:number;
-    weight:number;
-    price:number;
-    private ordered:boolean=false;
-    constructor(width:number,length:number,weight:number,price:number){
-        this.width=width;
-        this.length=length;
-        this.weight=weight;
-        this.price=price;
-    }
-    get getOrder():boolean{
-        return this.ordered;
-    }
-    set setOrdered(itsOrdered:boolean){
-        this.ordered=itsOrdered;
-    }
-    static expensiveOrCheap(expectation:string="expensive",...productArray:Product[]){
-        productArray.sort((a,b)=>a.price-b.price);
-        return expectation=="expensive" ? productArray[productArray.length-1]:productArray[0];
-    }
-}
+// class Product{
+//     width:number;
+//     length:number;
+//     weight:number;
+//     price:number;
+//     private ordered:boolean=false;
+//     constructor(width:number,length:number,weight:number,price:number){
+//         this.width=width;
+//         this.length=length;
+//         this.weight=weight;
+//         this.price=price;
+//     }
+//     get getOrder():boolean{
+//         return this.ordered;
+//     }
+//     set setOrdered(itsOrdered:boolean){
+//         this.ordered=itsOrdered;
+//     }
+//     static expensiveOrCheap(expectation:string="expensive",...productArray:Product[]){
+//         productArray.sort((a,b)=>a.price-b.price);
+//         return expectation=="expensive" ? productArray[productArray.length-1]:productArray[0];
+//     }
+// }
 
-class Computer extends Product{
-    vat:number;
-    constructor(width:number,length:number,weight:number,price:number,vat:number){
-        super(width,length,weight,price)
-        this.vat=vat;
-    }
-    printCoputerDetels():void{
-        console.log(`width:${this.width},length:${this.length},weight:${this.weight},price:${this.price},vat:${this.vat}`)
-    }
+// // class Computer extends Product{
+// //     vat:number;
+// //     constructor(width:number,length:number,weight:number,price:number,vat:number){
+// //         super(width,length,weight,price)
+// //         this.vat=vat;
+// //     }
+// //     printCoputerDetels():void{
+// //         console.log(`width:${this.width},length:${this.length},weight:${this.weight},price:${this.price},vat:${this.vat}`)
+// //     }
 
-    printIfComputerIsOreder():string{
-        return this.getOrder==true ? "order":"need to order";
-    }
-}
-const Computer1:Computer=new Computer(23,12,65,98,78);
-const Computer2:Computer=new Computer(45,56,45,87,99);
-const Computer3:Computer=new Computer(54,13,54,54,42);
-console.log()
+// //     printIfComputerIsOreder():string{
+// //         return this.getOrder==true ? "order":"need to order";
+// //     }
+// // }
+// // const Computer1:Computer=new Computer(23,12,65,98,78);
+// // const Computer2:Computer=new Computer(45,56,45,87,99);
+// // const Computer3:Computer=new Computer(54,13,54,54,42);
+// // console.log(Product.expensiveOrCheap("expensiv",Computer1,Computer2,Computer3))
 
+// class Computer_screen extends Product{
+//     orderNum:number;
+//     resolution:number;
+//     constructor(width:number,length:number,weight:number,price:number,orderNum:number,resolution:number){
+//         super(width,length,weight,price)
+//         this.orderNum=orderNum;
+//         this.resolution=resolution;
+//     }
+//     printComputer_screenDetels():string{
+//         return `width:${this.weight} length:${this.length} weight:${this.weight} price:${this.price} order num:${this.orderNum} resolution:${this.resolution}px`
+//     }
+//     printIfOrder():string{
+//         return this.getOrder==true ? `order ${this.orderNum}`: "need to order";
+//     }
+// }
+// const Computer_screen1:Computer_screen=new Computer_screen(32,21,54,87,9,6);
+// const Computer_screen2:Computer_screen=new Computer_screen(54,9,65,3,98,45);
+// const Computer_screen3:Computer_screen=new Computer_screen(23,5,58,74,96,85);
+// console.log(Product.expensiveOrCheap("expensive",Computer_screen1,Computer_screen2,Computer_screen3))
+
+
+// class Factory{
+//     factory_name:string;
+//     city:string;
+//     employees:number;
+//     approved:boolean=false;
+//     private automation:boolean=false;
+//     constructor(factory_name:string,city:string,employees:number,approved:boolean){
+//         this.factory_name=factory_name;
+//         this.city=city;
+//         this.employees=employees;
+//         this.approved=approved;
+//     }
+//     get IsThereAutomation():boolean{
+//         return this.automation;
+//     }
+//     set SetIsThereAutomation(haveAutomation:boolean){
+//         this.automation=haveAutomation;
+//     }
+//     static manyEmployees(ALotOrALittle:string="a lot",...factoryArray:Factory[]){
+//         factoryArray.sort((a,b)=>a.employees-b.employees)
+//         return ALotOrALittle=="a lot" ? factoryArray[factoryArray.length-1]:factoryArray[0];
+//     }
+// }
+
+// class TV_Warehouse extends Factory{
+//     manyTV:number;
+//     constructor(factory_name:string,city:string,employees:number,approved:boolean,manyTV:number){
+//         super(factory_name,city,employees,approved)
+//         this.manyTV=manyTV;
+//     }
+//     printV_WarehouseDetels():void{
+//         console.log(`factory_name:${this.factory_name}, city:${this.city},employees:${this.employees}, approved:${this.approved}, manyTV:${this.manyTV} `)
+//     }
+
+//     haveApproved():string{
+//         return this.approved==true ? "have approved": "An application has been submitted"
+//     }
+// }
+// const TV_Warehouse1:TV_Warehouse=new TV_Warehouse("pps","petah tikva",32,true,85);
+// const TV_Warehouse2:TV_Warehouse=new TV_Warehouse("ksp","netanya",44,false,65);
+// const TV_Warehouse3:TV_Warehouse=new TV_Warehouse("aig","haifa",87,true,33);
+// console.log(Factory.manyEmployees("a lot",TV_Warehouse1,TV_Warehouse2,TV_Warehouse3))
+
+// class Sandwich_Factory extends Factory{
+//     kosher:boolean=true;
+//     constructor(factory_name:string,city:string,employees:number,approved:boolean,kosher:boolean){
+//         super(factory_name,city,employees,approved)
+//         this.kosher=kosher;
+//     }
+//     printSandwich_FactoryDetels():string{
+//         return `factory_name:${this.factory_name}, city:${this.city}, employees:${this.employees}, approved:${this.approved}, kosher:${this.kosher}`
+//     }
+//     ifHaveAutomation():string{
+//        return this.SetIsThereAutomation==true ? `have automation, ${this.employees} employees`:"dont have employees"
+//     }
+// }
+
+// const Sandwich_Factory1:Sandwich_Factory=new Sandwich_Factory("tnt","petah tikva",32,true,false);
+// const Sandwich_Factory2:Sandwich_Factory=new Sandwich_Factory("pmp","netanya",50,false,true);
+// const Sandwich_Factory3:Sandwich_Factory=new Sandwich_Factory("aif","haifa",80,true,true);
+// console.log(Factory.manyEmployees("a lot",Sandwich_Factory1,Sandwich_Factory2,Sandwich_Factory3))
 
 
 
